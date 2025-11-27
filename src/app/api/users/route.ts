@@ -1,7 +1,7 @@
 import db from '@/lib/db';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(): Promise<Response> {
   return new Promise((resolve) => {
     db.all('SELECT * FROM users', (err, rows) => {
       if (err) {
@@ -13,7 +13,7 @@ export async function GET() {
   });
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<Response> {
   const { name, email } = await request.json();
   return new Promise((resolve) => {
     db.run('INSERT INTO users (name, email) VALUES (?, ?)', [name, email], function(err) {
