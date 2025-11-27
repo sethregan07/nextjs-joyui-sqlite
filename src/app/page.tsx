@@ -86,8 +86,8 @@ export default function ArticlesHome() {
     const fetchData = async () => {
       try {
         const [articlesRes, categoriesRes] = await Promise.all([
-          fetch('http://localhost:3002/articles'),
-          fetch('http://localhost:3002/categories')
+          fetch('/api/articles'),
+          fetch('/api/categories')
         ]);
 
         if (!articlesRes.ok) throw new Error('Failed to fetch articles');
